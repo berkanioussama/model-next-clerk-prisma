@@ -46,14 +46,10 @@ export async function POST(req: Request) {
       status: 400,
     })
   }
-
-  // Do something with payload
-  // For this guide, log payload to console
-  const { id } = evt.data
-  const eventType = evt.type
   
   if (evt.type === 'user.created') {
-    console.log('userId:', evt.data.id)
+    const { id, email_addresses, first_name, last_name, image_url } = evt.data
+    console.log(id, email_addresses, first_name, last_name, image_url)
   }
 
   return new Response('Webhook received', { status: 200 })
